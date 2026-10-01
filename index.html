@@ -13,73 +13,68 @@
       --text: #1e293b;
       --text-muted: #64748b;
       --border: #e2e8f0;
-      --success: #10b981;
-      --warning: #f59e0b;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
-    body { background-color: var(--bg); color: var(--text); padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+    body { background-color: var(--bg); color: var(--text); padding: 24px 16px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
 
-    .container { width: 100%; max-width: 760px; display: flex; flex-direction: column; gap: 20px; }
+    .container { width: 100%; max-width: 680px; display: flex; flex-direction: column; gap: 20px; }
 
-    /* 頂部導航切換 */
+    /* 頂部切換 */
     .tabs { display: flex; background: #e2e8f0; border-radius: 12px; padding: 4px; gap: 4px; }
     .tab-btn { flex: 1; border: none; padding: 12px; font-size: 1rem; font-weight: 600; border-radius: 8px; cursor: pointer; background: transparent; color: var(--text-muted); transition: all 0.2s ease; }
     .tab-btn.active { background: white; color: var(--primary); box-shadow: 0 2px 4px rgba(0,0,0,0.06); }
 
-    /* 面板通透樣式 */
+    /* 面板容器 */
     .panel { display: none; background: var(--card-bg); border-radius: 16px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid var(--border); }
     .panel.active { display: block; }
 
-    /* 單字錄入表單 */
+    /* 表單項目 */
     .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
     label { font-size: 0.9rem; font-weight: 600; color: var(--text); }
     input[type="text"], textarea { width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; outline: none; transition: border-color 0.2s; }
     input[type="text"]:focus, textarea:focus { border-color: var(--primary); }
 
-    .btn-row { display: flex; gap: 10px; margin-top: 8px; }
     button.btn { padding: 10px 18px; border-radius: 8px; border: none; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
     .btn-primary { background: var(--primary); color: white; }
     .btn-primary:hover { background: var(--primary-hover); }
     .btn-secondary { background: #f1f5f9; color: var(--text); }
     .btn-secondary:hover { background: #e2e8f0; }
 
-    /* 翻牌練習卡片樣式 */
+    /* 翻牌卡片 */
     .flashcard-wrapper { perspective: 1000px; width: 100%; height: 320px; margin: 20px 0; cursor: pointer; }
-    .flashcard { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); border-radius: 20px; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
+    .flashcard { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.4s ease; border-radius: 20px; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08); }
     .flashcard.flipped { transform: rotateY(180deg); }
 
     .card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 20px; padding: 32px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border: 2px solid var(--border); background: white; }
     .card-face.back { transform: rotateY(180deg); background: #f8fafc; border-color: #cbd5e1; }
 
-    .card-term { font-size: 2.2rem; font-weight: 700; color: var(--text); margin-bottom: 8px; }
-    .card-phonetic { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 12px; }
+    .card-term { font-size: 2.2rem; font-weight: 700; color: var(--text); word-break: break-word; }
     .card-meaning { font-size: 1.6rem; font-weight: 600; color: var(--primary); margin-bottom: 12px; }
-    .card-ai-note { font-size: 0.95rem; color: #475569; background: #e2e8f0; padding: 10px 14px; border-radius: 8px; max-height: 110px; overflow-y: auto; text-align: left; width: 100%; }
+    .card-note { font-size: 0.95rem; color: #475569; background: #e2e8f0; padding: 12px 16px; border-radius: 8px; max-height: 120px; overflow-y: auto; text-align: left; width: 100%; white-space: pre-wrap; }
 
-    .card-controls { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; }
+    .card-controls { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
     .card-counter { font-size: 0.95rem; color: var(--text-muted); font-weight: 600; }
 
     /* 單字清單列表 */
-    .vocab-list { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; max-height: 400px; overflow-y: auto; }
+    .vocab-list { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; max-height: 420px; overflow-y: auto; }
     .vocab-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; border: 1px solid var(--border); border-radius: 10px; background: white; }
     .vocab-info h4 { font-size: 1.1rem; margin-bottom: 4px; }
     .vocab-info p { font-size: 0.9rem; color: var(--text-muted); }
-    .delete-btn { color: #ef4444; border: none; background: transparent; cursor: pointer; font-size: 1.2rem; padding: 4px 8px; }
+    .delete-btn { color: #ef4444; border: none; background: transparent; cursor: pointer; font-size: 1.2rem; padding: 6px; }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <h2 style="text-align: center;">單字記憶庫 & 翻牌小工具</h2>
+    <h2 style="text-align: center; font-size: 1.5rem;">單字記憶庫 & 翻牌小工具</h2>
 
     <div class="tabs">
       <button class="tab-btn active" onclick="switchTab('practice')">練習模式 (翻牌)</button>
       <button class="tab-btn" onclick="switchTab('manage')">單字庫管理</button>
-      <button class="tab-btn" onclick="switchTab('settings')">AI 與資料備份</button>
     </div>
 
-    <!-- 練習面板 -->
+    <!-- 練習模式 -->
     <div id="panel-practice" class="panel active">
       <div class="card-controls">
         <span class="card-counter" id="card-counter">0 / 0</span>
@@ -94,13 +89,12 @@
           <!-- 正面 -->
           <div class="card-face front">
             <div class="card-term" id="card-front-term">請先新增單字</div>
-            <div class="card-phonetic" id="card-front-phonetic"></div>
-            <p style="color: #94a3b8; font-size: 0.85rem; margin-top: 20px;">(點擊卡片或按 Space/Enter 翻面)</p>
+            <p style="color: #94a3b8; font-size: 0.85rem; margin-top: 24px;">(點擊卡片或按 Space / Enter 翻面)</p>
           </div>
           <!-- 背面 -->
           <div class="card-face back">
             <div class="card-meaning" id="card-back-meaning">--</div>
-            <div class="card-ai-note" id="card-back-ai">無網路/AI 補充說明</div>
+            <div class="card-note" id="card-back-note" style="display: none;"></div>
             <p style="color: #94a3b8; font-size: 0.85rem; margin-top: 16px;">(再次點擊翻回)</p>
           </div>
         </div>
@@ -112,57 +106,42 @@
       </div>
     </div>
 
-    <!-- 單字庫管理面板 -->
+    <!-- 單字庫管理 -->
     <div id="panel-manage" class="panel">
-      <h3>新增單字 / 片語</h3>
+      <h3 style="font-size: 1.2rem;">新增單字 / 片語</h3>
+      
       <div class="form-group" style="margin-top: 14px;">
         <label>英文單字或片語：</label>
-        <div style="display: flex; gap: 8px;">
-          <input type="text" id="input-term" placeholder="例如：perseverance 或 take off">
-          <button class="btn btn-secondary" onclick="fetchDictionaryInfo()">🔍 查字典釋義</button>
-        </div>
+        <input type="text" id="input-term" placeholder="例如：perseverance">
       </div>
 
       <div class="form-group">
-        <label>你的中文意思：</label>
+        <label>中文意思：</label>
         <input type="text" id="input-meaning" placeholder="例如：堅持不懈">
       </div>
 
       <div class="form-group">
-        <label>AI 或網路詳細釋義 / 例句補充：</label>
-        <textarea id="input-ai-note" rows="3" placeholder="點擊上方查詢自動填入，或直接輸入 AI 註記..."></textarea>
+        <label>補充說明 / 例句（選填）：</label>
+        <textarea id="input-note" rows="3" placeholder="可貼上自己喜歡的例句、用法或註記..."></textarea>
       </div>
 
-      <button class="btn btn-primary" style="width: 100%;" onclick="addWord()">加入字庫</button>
+      <button class="btn btn-primary" style="width: 100%; padding: 12px;" onclick="addWord()">加入字庫</button>
 
       <hr style="margin: 24px 0; border: none; border-top: 1px solid var(--border);">
 
       <div style="display: flex; justify-content: space-between; align-items: center;">
         <h3>字庫清單 (<span id="total-count">0</span>)</h3>
-        <input type="text" id="search-box" placeholder="搜尋單字..." style="width: 200px; padding: 6px 10px;" oninput="renderVocabList()">
+        <input type="text" id="search-box" placeholder="搜尋單字..." style="width: 180px; padding: 6px 10px;" oninput="renderVocabList()">
       </div>
       <div class="vocab-list" id="vocab-list"></div>
-    </div>
-
-    <!-- 設定與備份 -->
-    <div id="panel-settings" class="panel">
-      <h3>資料備份與還原</h3>
-      <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 6px;">所有資料均安全儲存於瀏覽器 LocalStorage。你也可以匯出 JSON 備份以防更換電腦。</p>
-      
-      <div class="btn-row" style="margin-top: 16px;">
-        <button class="btn btn-secondary" onclick="exportData()">💾 匯出字庫 (JSON)</button>
-        <input type="file" id="import-file" style="display: none;" onchange="importData(event)">
-        <button class="btn btn-secondary" onclick="document.getElementById('import-file').click()">📂 匯入字庫</button>
-        <button class="btn btn-secondary" style="color: #ef4444;" onclick="clearAllData()">⚠️ 清空字庫</button>
-      </div>
     </div>
   </div>
 
   <script>
-    // 預設字庫（初次開啟若無紀錄時帶入示範）
+    // 預設示範資料
     const DEFAULT_DATA = [
-      { id: 1, term: "perseverance", meaning: "堅持不懈、毅力", phonetic: "/ˌpɜːsɪˈvɪərəns/", aiNote: "網路釋義：persistence in doing something despite difficulty or delay in achieving success." },
-      { id: 2, term: "take off", meaning: "起飛；迅速走紅", phonetic: "", aiNote: "例句：The plane is scheduled to take off at 14:00." }
+      { id: 1, term: "perseverance", meaning: "堅持不懈、毅力", note: "例句：Success requires hard work and perseverance." },
+      { id: 2, term: "really", meaning: "真正地、十分", note: "例句：I really appreciate your help." }
     ];
 
     let vocabList = JSON.parse(localStorage.getItem("my_vocab_db")) || DEFAULT_DATA;
@@ -175,7 +154,6 @@
       renderVocabList();
     }
 
-    // 切換分頁
     function switchTab(tabId) {
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
       document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
@@ -184,17 +162,13 @@
         document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
         document.getElementById('panel-practice').classList.add('active');
         updateCardDisplay();
-      } else if (tabId === 'manage') {
+      } else {
         document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
         document.getElementById('panel-manage').classList.add('active');
         renderVocabList();
-      } else {
-        document.querySelector('.tab-btn:nth-child(3)').classList.add('active');
-        document.getElementById('panel-settings').classList.add('active');
       }
     }
 
-    // 翻牌與切換卡片
     function flipCard() {
       if (vocabList.length === 0) return;
       isFlipped = !isFlipped;
@@ -208,9 +182,8 @@
 
       if (vocabList.length === 0) {
         document.getElementById('card-front-term').innerText = "尚無單字";
-        document.getElementById('card-front-phonetic').innerText = "";
         document.getElementById('card-back-meaning').innerText = "--";
-        document.getElementById('card-back-ai').innerText = "請至管理面板新增單字";
+        document.getElementById('card-back-note').style.display = "none";
         document.getElementById('card-counter').innerText = "0 / 0";
         return;
       }
@@ -220,9 +193,16 @@
 
       const item = vocabList[currentIndex];
       document.getElementById('card-front-term').innerText = item.term;
-      document.getElementById('card-front-phonetic').innerText = item.phonetic || "";
       document.getElementById('card-back-meaning').innerText = item.meaning;
-      document.getElementById('card-back-ai').innerText = item.aiNote || "（無額外補充）";
+      
+      const noteEl = document.getElementById('card-back-note');
+      if (item.note && item.note.trim() !== "") {
+        noteEl.innerText = item.note;
+        noteEl.style.display = "block";
+      } else {
+        noteEl.style.display = "none";
+      }
+
       document.getElementById('card-counter').innerText = `${currentIndex + 1} / ${vocabList.length}`;
     }
 
@@ -247,7 +227,6 @@
       updateCardDisplay();
     }
 
-    // 語音發音
     function speakCurrentWord() {
       if (vocabList.length === 0) return;
       const term = vocabList[currentIndex].term;
@@ -256,63 +235,31 @@
       window.speechSynthesis.speak(utter);
     }
 
-    // 自動聯網查字典釋義 (Free Dictionary API)
-    async function fetchDictionaryInfo() {
-      const term = document.getElementById('input-term').value.trim();
-      if (!term) return alert('請先輸入英文單字！');
-
-      try {
-        const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(term)}`);
-        if (!res.ok) throw new Error();
-        const data = await res.json();
-        const entry = data[0];
-        const phonetic = entry.phonetic || (entry.phonetics.find(p => p.text)?.text || "");
-        
-        let notes = [];
-        if (entry.meanings && entry.meanings.length > 0) {
-          entry.meanings.slice(0, 2).forEach(m => {
-            const def = m.definitions[0]?.definition;
-            const ex = m.definitions[0]?.example;
-            notes.push(`[${m.partOfSpeech}] ${def}` + (ex ? `\n例: "${ex}"` : ""));
-          });
-        }
-        
-        document.getElementById('input-ai-note').value = notes.join('\n\n');
-        // 自動暫存音標
-        document.getElementById('input-term').dataset.phonetic = phonetic;
-      } catch (err) {
-        alert('查無該單字的網路字典定義，您可以自行手動填寫補充或 AI 筆記！');
-      }
-    }
-
-    // 新增單字
     function addWord() {
-      const termInput = document.getElementById('input-term');
-      const term = termInput.value.trim();
+      const term = document.getElementById('input-term').value.trim();
       const meaning = document.getElementById('input-meaning').value.trim();
-      const aiNote = document.getElementById('input-ai-note').value.trim();
-      const phonetic = termInput.dataset.phonetic || "";
+      const note = document.getElementById('input-note').value.trim();
 
-      if (!term || !meaning) return alert('請填寫單字與中文意思！');
+      if (!term || !meaning) {
+        alert('請填寫單字與中文意思！');
+        return;
+      }
 
       vocabList.unshift({
         id: Date.now(),
         term,
         meaning,
-        phonetic,
-        aiNote
+        note
       });
 
-      termInput.value = "";
-      termInput.dataset.phonetic = "";
+      document.getElementById('input-term').value = "";
       document.getElementById('input-meaning').value = "";
-      document.getElementById('input-ai-note').value = "";
+      document.getElementById('input-note').value = "";
 
       saveToStorage();
-      alert('單字已成功儲存至記憶庫！');
+      alert('單字已儲存！');
     }
 
-    // 渲染清單
     function renderVocabList() {
       const listEl = document.getElementById('vocab-list');
       const filter = document.getElementById('search-box').value.toLowerCase();
@@ -329,9 +276,9 @@
         div.className = 'vocab-item';
         div.innerHTML = `
           <div class="vocab-info">
-            <h4>${item.term} <span style="font-weight: normal; font-size: 0.9rem; color: #64748b;">${item.phonetic || ''}</span></h4>
+            <h4>${item.term}</h4>
             <p><strong>${item.meaning}</strong></p>
-            ${item.aiNote ? `<p style="font-size: 0.8rem; color: #475569; margin-top: 4px;">💡 ${item.aiNote.substring(0, 80)}...</p>` : ''}
+            ${item.note ? `<p style="font-size: 0.8rem; color: #64748b; margin-top: 4px;">📝 ${item.note.substring(0, 60)}${item.note.length > 60 ? '...' : ''}</p>` : ''}
           </div>
           <button class="delete-btn" title="刪除" onclick="deleteWord(${item.id})">🗑️</button>
         `;
@@ -340,12 +287,12 @@
     }
 
     function deleteWord(id) {
-      if (!confirm('確定要從字庫移除此單字嗎？')) return;
+      if (!confirm('確定刪除此單字？')) return;
       vocabList = vocabList.filter(item => item.id !== id);
       saveToStorage();
     }
 
-    // 鍵盤快捷鍵支援
+    // 鍵盤快捷鍵
     window.addEventListener('keydown', (e) => {
       if (document.getElementById('panel-practice').classList.contains('active')) {
         if (e.code === 'Space' || e.code === 'Enter') {
@@ -359,43 +306,7 @@
       }
     });
 
-    // 匯出 / 匯入備份
-    function exportData() {
-      const blob = new Blob([JSON.stringify(vocabList, null, 2)], { type: "application/json" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `vocab_backup_${new Date().toISOString().slice(0, 10)}.json`;
-      a.click();
-    }
-
-    function importData(event) {
-      const file = event.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        try {
-          const imported = JSON.parse(e.target.result);
-          if (Array.isArray(imported)) {
-            vocabList = imported;
-            saveToStorage();
-            alert('字庫成功匯入！');
-          }
-        } catch (err) {
-          alert('匯入失敗：檔案格式不正確');
-        }
-      };
-      reader.readAsText(file);
-    }
-
-    function clearAllData() {
-      if (confirm('確定要清空所有已存單字嗎？建議先匯出備份！')) {
-        vocabList = [];
-        saveToStorage();
-      }
-    }
-
-    // 初始化載入
+    // 初始載入
     updateCardDisplay();
     renderVocabList();
   </script>
